@@ -1,0 +1,9 @@
+# requirements.in
+PySide6
+pandas
+numpy
+matplotlib
+requests
+ollama
+python-dotenv
+dotenv
