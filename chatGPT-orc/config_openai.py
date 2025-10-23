@@ -14,3 +14,9 @@ def get_openai_client() -> OpenAI:
     client = OpenAI(api_key=api_key)      
 
     return client
+
+def models_list_to_dict(client: OpenAI) -> dict[str, str]:
+    
+    models = client.models.list()
+    models_dict = {models.id: models.id for models in models.data}  
+    return models_dict

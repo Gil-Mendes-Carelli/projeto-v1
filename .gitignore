@@ -12,6 +12,10 @@ venv/
 .vscode/
 
 # -----------------------------
+# Local Folders
+# -----------------------------
+chatGPT-orc/essays
+# -----------------------------
 # Scripts / Notebooks
 # -----------------------------
 resumo.ipynb
