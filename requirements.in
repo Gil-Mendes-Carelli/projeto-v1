@@ -6,4 +6,4 @@ matplotlib
 requests
 ollama
 python-dotenv
-dotenv
+dotenvpython-dotenv 
