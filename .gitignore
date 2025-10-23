@@ -1,17 +1,23 @@
 # -----------------------------
-# Ambientes virtuais
+# Virtual environment
 # -----------------------------
 .venv/
 env/
 venv/
-
+# Variables
+.env
 # -----------------------------
 # VSCode
 # -----------------------------
 .vscode/
 
 # -----------------------------
-# Arquivos Python compilados
+# Scripts / Notebooks
+# -----------------------------
+resumo.ipynb
+
+# -----------------------------
+# Compiled files
 # -----------------------------
 __pycache__/
 *.py[cod]
@@ -23,7 +29,7 @@ __pycache__/
 *.log
 
 # -----------------------------
-# Testes / Cobertura
+# Testes
 # -----------------------------
 .coverage
 htmlcov/
@@ -32,7 +38,7 @@ htmlcov/
 .pytest_cache/
 
 # -----------------------------
-# Configuração / Builds
+# Configs / Builds
 # -----------------------------
 *.egg-info/
 *.egg
@@ -40,7 +46,7 @@ build/
 dist/
 
 # -----------------------------
-# Sistema operacional
+# OS
 # -----------------------------
 .DS_Store
 Thumbs.db
