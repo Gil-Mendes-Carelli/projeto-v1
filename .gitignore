@@ -21,7 +21,7 @@ old/
 # Scripts / Notebooks
 # -----------------------------
 resumo.ipynb
-initial_studies.ipynb
+*.ipynb
 # -----------------------------
 # Compiled files
 # -----------------------------
