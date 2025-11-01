@@ -1,4 +1,4 @@
-# Meu Projeto Python
+# Projeto para estudo sobre as capacidade de alguns LLMs opnen-source
 
 Projeto criado em Python com uso de ambiente virtual e gerenciamento de dependências via pip-tools.
 
