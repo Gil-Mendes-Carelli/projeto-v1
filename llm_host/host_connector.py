@@ -1,21 +1,29 @@
-import os
+from typing import Protocol, TypeVar, Generic
 import ollama
-from dotenv import load_dotenv
 from logger_config import log
 
+TClient = TypeVar("TClient", covariant=True)
 
-def load_ollama_client() -> ollama.Client:
-    # environment variable
-    load_dotenv()
-    try:
-        client: ollama.Client = ollama.Client(host=os.getenv("OLLAMA_HOST"))
-        log.info("Cliente Ollama inicializado e conexão com o host bem-sucedida.")
-        return client
 
-    except Exception as e:
-        log.error(f"Não foi possível conectar ao servidor Ollama.")
-        log.error(f"Detalhes do erro: {e}")
-        return None
+class HostConnector(Protocol, Generic[TClient]):
+    def connect_to_host(self, host_url) -> TClient: ...
+
+
+class OllamaClient(HostConnector):
+            
+    def connect_to_host(self, host_url: str) -> ollama.Client:
+        try:
+            client: ollama.Client = ollama.Client(host=host_url)
+            log.info("Cliente Ollama inicializado e conexão com o host bem-sucedida.")
+            return client
+
+        except Exception as e:
+            log.error(f"Não foi possível conectar ao servidor Ollama.")
+            log.error(f"Detalhes do erro: {e}")
+            raise
+            
+
+
 
 
 class OllamaClient:
@@ -23,7 +31,7 @@ class OllamaClient:
     client: ollama.Client | None
 
     def __init__(self) -> None:
-        self.client: ollama.Client = load_ollama_client()
+        self.client: ollama.Client 
 
     def create_custom_model(
         self, model_name: str, base_model: str, system_role: str
@@ -39,6 +47,7 @@ class OllamaClient:
     def list_models(self) -> list:
         return self.client.list()
 
+
 def prompt_model(client: ollama.Client, model_name: str, prompt) -> str:
     """
     Asks a question and returns its answer ...duh
@@ -49,8 +58,10 @@ def prompt_model(client: ollama.Client, model_name: str, prompt) -> str:
 
     return response.message.content
 
+
 def main() -> None:
     pass
+
 
 if __name__ == "__main__":
     main()
