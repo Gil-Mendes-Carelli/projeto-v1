@@ -1,4 +1,4 @@
-# Projeto para estudo sobre as capacidade de alguns LLMs open-source
+# Projeto para estudo sobre as capacidade de LLMs open-source
 [![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/Gil-Mendes-Carelli/projeto-v1/tree/main)
 
 Este projeto foi criado em Python para explorar e interagir com modelos de linguagem de grande porte (LLMs) open-source através de um servidor Ollama. Ele fornece um cliente para se conectar ao host do Ollama, listar modelos, criar modelos personalizados e iniciar sessões de chat.
