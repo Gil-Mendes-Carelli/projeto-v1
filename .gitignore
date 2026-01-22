@@ -56,3 +56,13 @@ dist/
 # -----------------------------
 .DS_Store
 Thumbs.db
+
+# -----------------------------
+# Files
+# -----------------------------
+grade-rule-1.txt
+grade-rule-2.txt
+grade-rule-3.txt
+grade-rule-4.txt
+grade-rule-5.txt
+classification-rules.txt
