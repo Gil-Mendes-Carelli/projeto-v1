@@ -29,7 +29,7 @@ def process_files(config: ProcessFilesConfig) -> None:
         messages.append({"role": "system", "content": config.system_role or ""})
         messages.append({"role": "user", "content": text})
 
-        response = config.client.chat(
+        response: str = config.client.chat(
             model_name=config.model_name,
             messages=messages,
             options=config.client.options,
