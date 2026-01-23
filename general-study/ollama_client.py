@@ -17,10 +17,10 @@ class OllamaConnectionError(Exception):
 
 
 class OllamaClient(LLMClient):
-
-    _client: ollama.Client
-    temperature: str = TEMPERATURE
-    top_p: str = TOP_P
+    def __init__(self, temperature: float = TEMPERATURE, top_p: float = TOP_P):
+        self._client: ollama.Client | None = None
+        self.temperature: float = temperature
+        self.top_p: float = top_p
 
     def connect_to_host(self, host_url: str) -> "OllamaClient":
         try:
@@ -71,19 +71,21 @@ class OllamaClient(LLMClient):
         self,
         model_name: str,
         messages: List[Dict[str, Any]],
-        options: List[Dict[str, Any]] = {
-            "temperature": TEMPERATURE,
-            "top_p": TOP_P,
-        },
+        options: Dict[str, Any] | None = None,
     ) -> str:
+        if options is None:
+            options = {"temperature": self.temperature, "top_p": self.top_p}
         try:
             log.info(f"Enviando prompt para o modelo '{model_name}'...")
-            response = self._client.chat(
-                model=model_name, messages=messages, options=options
-            )
-            content = response.get("message", {}).get("content", "")
-            log.info("Resposta recebida do modelo.")
-            return content
+            if self._client:
+                response = self._client.chat(
+                    model=model_name, messages=messages, options=options
+                )
+                content = response.get("message", {}).get("content", "")
+                log.info("Resposta recebida do modelo.")
+                return content
+            else:
+                raise OllamaConnectionError("Cliente Ollama não conectado.")
         except Exception as e:
             log.error(f"Erro durante o chat com o modelo '{model_name}': {e}")
             return ""
