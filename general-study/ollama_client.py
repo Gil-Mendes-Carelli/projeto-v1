@@ -18,12 +18,15 @@ class OllamaConnectionError(Exception):
 
 class OllamaClient(LLMClient):
 
-    _client: ollama.Client
-    options = {
-                "temperature": TEMPERATURE,
-                "top_p": TOP_P,
-            }
-    
+    _client: ollama.Client | None
+    options: Dict[str, float] | None
+
+    def __init__(self) -> None:
+        self._client: ollama.Client = None
+        self.options = {
+            "temperature": TEMPERATURE,
+            "top_p": TOP_P,
+        }
 
     def connect_to_host(self, host_url: str) -> "OllamaClient":
         try:
@@ -74,7 +77,7 @@ class OllamaClient(LLMClient):
         self,
         model_name: str,
         messages: List[Dict[str, Any]],
-        options: Dict[str, float] | None = None
+        options: Dict[str, float] | None = None,
     ) -> str:
         if options is None:
             options = self.options
