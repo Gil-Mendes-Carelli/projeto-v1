@@ -4,9 +4,10 @@ from typing import List, Dict, Any, Protocol
 from logger_config import log
 
 # model's parameters constants
-TEMPERATURE = 0.1
+TEMPERATURE = 0.2
 TOP_P = 0.9
-
+TOP_K = 30
+REPEAT_PENALTY = 1.1
 
 class LLMClient(Protocol):
     def chat(self, model_name: str, messages: List[Dict[str, Any]]) -> str: ...
@@ -26,6 +27,8 @@ class OllamaClient(LLMClient):
         self.options = {
             "temperature": TEMPERATURE,
             "top_p": TOP_P,
+            "top_k": TOP_K,
+            "repeat_penalty": REPEAT_PENALTY,
         }
 
     def connect_to_host(self, host_url: str) -> "OllamaClient":
