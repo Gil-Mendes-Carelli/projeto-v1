@@ -19,8 +19,11 @@ class OllamaConnectionError(Exception):
 class OllamaClient(LLMClient):
 
     _client: ollama.Client
-    temperature: str = TEMPERATURE
-    top_p: str = TOP_P
+    options = {
+                "temperature": TEMPERATURE,
+                "top_p": TOP_P,
+            }
+    
 
     def connect_to_host(self, host_url: str) -> "OllamaClient":
         try:
@@ -71,11 +74,10 @@ class OllamaClient(LLMClient):
         self,
         model_name: str,
         messages: List[Dict[str, Any]],
-        options: List[Dict[str, Any]] = {
-            "temperature": TEMPERATURE,
-            "top_p": TOP_P,
-        },
+        options: Dict[str, float] | None = None
     ) -> str:
+        if options is None:
+            options = self.options
         try:
             log.info(f"Enviando prompt para o modelo '{model_name}'...")
             response = self._client.chat(

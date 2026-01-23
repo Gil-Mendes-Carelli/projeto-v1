@@ -21,23 +21,20 @@ def process_files(config: ProcessFilesConfig) -> None:
     Args:
         A ProcessFilesConfig objet with all configurations.
     """
-    
+
     # Iteration over read texts from the files
-    for text in config.files_text:  
+    for text in config.files_text:
         # Inserting system role message
         messages: list[dict[str, str]] = []
         messages.append({"role": "system", "content": config.system_role or ""})
         messages.append({"role": "user", "content": text})
         # Chatting with a model
         response = config.client.chat(
-                model=config.model_name,
-                messages=messages,
-                options={
-                    "temperature": config.client.temperature,
-                    "top_p": config.client.top_p,
-                },
-            )
-        
+            model_name=config.model_name,
+            messages=messages,
+            options=config.client.options,
+        )
+
         # Saving model's response to a file
         if config.output_file_name:
             save_response_to_file(response, config.output_file_name)
@@ -66,6 +63,7 @@ def save_response_to_file(
     output_file = Path.cwd() / output_file
     with output_file.open("a", encoding="utf-8") as f:
         f.write(response + "\n")
+
 
 ##### End of helpers functions #####
 
