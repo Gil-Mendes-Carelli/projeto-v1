@@ -23,7 +23,8 @@ def process_files(config: ProcessFilesConfig) -> None:
     """
     
     # Iteration over read texts from the files
-    for text in config.files_text:  
+    for text in config.files_text:
+        # set_system_role(config.client, config.model_name, config.system_role)        
         # Inserting system role message
         messages: list[dict[str, str]] = []
         messages.append({"role": "system", "content": config.system_role or ""})
@@ -33,8 +34,8 @@ def process_files(config: ProcessFilesConfig) -> None:
                 model=config.model_name,
                 messages=messages,
                 options={
-                    "temperature": config.client.temperature,
-                    "top_p": config.client.top_p,
+                    "temperature": config.client.options.temperature,
+                    "top_p": config.client.options.top_p,
                 },
             )
         
@@ -66,6 +67,14 @@ def save_response_to_file(
     output_file = Path.cwd() / output_file
     with output_file.open("a", encoding="utf-8") as f:
         f.write(response + "\n")
+
+
+def set_system_role(
+    client: LLMClient, model_name: str, system_role: str | None
+) -> None:
+    if system_role:
+        client.chat(model_name, [{"role": "system", "content": system_role}])
+
 
 ##### End of helpers functions #####
 

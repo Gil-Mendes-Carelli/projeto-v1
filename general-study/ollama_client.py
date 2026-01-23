@@ -7,9 +7,10 @@ from logger_config import log
 TEMPERATURE = 0.1
 TOP_P = 0.9
 
+
 class LLMClient(Protocol):
-    def chat(self, model_name: str, messages: List[Dict[str, Any]]) -> str:
-        ...
+    def chat(self, model_name: str, messages: List[Dict[str, Any]]) -> str: ...
+
 
 class OllamaConnectionError(Exception):
     pass
@@ -18,6 +19,8 @@ class OllamaConnectionError(Exception):
 class OllamaClient(LLMClient):
 
     _client: ollama.Client
+    temperature: str = TEMPERATURE
+    top_p: str = TOP_P
 
     def connect_to_host(self, host_url: str) -> "OllamaClient":
         try:
@@ -64,16 +67,19 @@ class OllamaClient(LLMClient):
             log.error(f"Erro ao listar os modelos: {e}")
             return ""
 
-    def chat(self, model_name: str, messages: List[Dict[str, Any]]) -> str:
+    def chat(
+        self,
+        model_name: str,
+        messages: List[Dict[str, Any]],
+        options: List[Dict[str, Any]] = {
+            "temperature": TEMPERATURE,
+            "top_p": TOP_P,
+        },
+    ) -> str:
         try:
             log.info(f"Enviando prompt para o modelo '{model_name}'...")
             response = self._client.chat(
-                model=model_name,
-                messages=messages,
-                options={
-                    "temperature": TEMPERATURE,
-                    "top_p": TOP_P,
-                },
+                model=model_name, messages=messages, options=options
             )
             content = response.get("message", {}).get("content", "")
             log.info("Resposta recebida do modelo.")
