@@ -21,26 +21,10 @@ def process_files(config: ProcessFilesConfig) -> None:
     Args:
         A ProcessFilesConfig objet with all configurations.
     """
-
-    # Iteration over read texts from the files
-    # for text in config.files_text:
-    #     # Inserting system role message
-    #     messages: list[dict[str, str]] = []
-    #     messages.append({"role": "system", "content": config.system_role or ""})
-    #     messages.append({"role": "user", "content": text})
-    #     # Chatting with a model
-    #     response = config.client.chat(
-    #         model_name=config.model_name,
-    #         messages=messages,
-    #         options=config.client.options,
-    #     )
-
-    #     # Saving model's response to a file
-    #     if config.output_file_name:
-    #         save_response_to_file(response, config.output_file_name)
-    #     else:
-    #         raise ValueError("Output file name is not valid.")
+    
     for file_path, text in config.files_text:
+        if file_path == "TEMA.docx":
+            continue  
         messages: list[dict[str, str]] = []
         messages.append({"role": "system", "content": config.system_role or ""})
         messages.append({"role": "user", "content": text})
