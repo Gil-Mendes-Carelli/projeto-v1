@@ -3,6 +3,13 @@ from docx import Document
 from dataclasses import dataclass
 
 from ollama_client import LLMClient
+from json_logger import setup_json_logger
+
+from pathlib import Path
+
+# Setup json logger
+log_file_path = Path("general-study/file_processor_v2_log.json")
+json_logger = setup_json_logger(__name__, log_file_path)
 
 
 @dataclass(slots=True)
@@ -29,11 +36,15 @@ def process_files(config: ProcessFilesConfig) -> None:
         messages.append({"role": "system", "content": config.system_role or ""})
         messages.append({"role": "user", "content": text})
 
+        json_logger.info({"variable": "config.system_role", "value": config.system_role})
+
         response: str = config.client.chat(
             model_name=config.model_name,
             messages=messages,
             options=config.client.options,
         )
+
+        json_logger.info({"variable": "response", "value": response})
 
         if config.output_file_name:
             save_response_to_file(response, file_path, config.output_file_name)
