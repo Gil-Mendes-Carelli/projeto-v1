@@ -8,7 +8,7 @@ from json_logger import setup_json_logger
 from pathlib import Path
 
 # Setup json logger
-log_file_path = Path("general-study/file_processor_v2_log.json")
+log_file_path = Path(__file__).parent / "file_processor_v2_log.json"
 json_logger = setup_json_logger(__name__, log_file_path)
 
 
@@ -37,6 +37,7 @@ def process_files(config: ProcessFilesConfig) -> None:
         messages.append({"role": "user", "content": text})
 
         json_logger.info({"variable": "config.system_role", "value": config.system_role})
+        json_logger.info({"variable": "text", "value": text})
 
         response: str = config.client.chat(
             model_name=config.model_name,

@@ -6,7 +6,7 @@ from json_logger import setup_json_logger
 from pathlib import Path
 
 # Setup json logger
-log_file_path = Path("general-study/ollama_client_log.json")
+log_file_path = Path(__file__).parent / "ollama_client_log.json"
 json_logger = setup_json_logger(__name__, log_file_path)
 
 # model's parameters constants
