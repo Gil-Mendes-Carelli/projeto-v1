@@ -71,3 +71,9 @@ consolidation_prompt.txt
 classification-rules-gemma.txt
 classification_results.txt
 general-study/classification_results.txt
+general-study/classification_results.txt
+general-study/file_processor_v2_log.json
+.gitignore
+.gitignore
+.gitignore
+general-study/ollama_client_log.json
