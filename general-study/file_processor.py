@@ -1,15 +1,19 @@
+#####################################################################################################
+############## This file processor is design to work with default installation models ###############
+#####################################################################################################
+
 from pathlib import Path
 from docx import Document
 from dataclasses import dataclass
 
 from ollama_client import LLMClient
-from json_logger import setup_json_logger
+from txt_logger import setup_txt_logger
 
 from pathlib import Path
 
 # Setup json logger
-log_file_path = Path(__file__).parent / "file_processor_log.json"
-json_logger = setup_json_logger(__name__, log_file_path)
+log_file_path = Path(__file__).parent / "file-proc-log.txt"
+txt_logger = setup_txt_logger(__name__, log_file_path)
 
 
 @dataclass(slots=True)
@@ -52,8 +56,9 @@ def process_files(config: ProcessFilesConfig) -> None:
         messages.append({"role": "system", "content": config.system_role or ""})
         messages.append({"role": "user", "content": text})
 
-        json_logger.info({"variable": "config.system_role", "value": config.system_role})
-        json_logger.info({"variable": "text", "value": text})
+        txt_logger.info({"variable": "model name", "value": config.model_name})
+        txt_logger.info({"variable": "config.system_role", "value": config.system_role})
+        txt_logger.info({"variable": "text", "value": text})
 
         response = config.client.chat(
             model_name=config.model_name,
@@ -61,7 +66,7 @@ def process_files(config: ProcessFilesConfig) -> None:
             options=config.client.options,
         )
 
-        json_logger.info({"variable": "response", "value": response})
+        txt_logger.info({"variable": "response", "value": response})
 
         if config.output_file_name:
             save_response_to_file(response, file_path, config.output_file_name)
@@ -164,7 +169,7 @@ def save_response_to_file(
 ) -> None:
     output_file = Path.cwd() / output_file
     with output_file.open("a", encoding="utf-8") as f:
-        f.write(f"{source_file_name} | {response}\n")
+        f.write(f"{source_file_name} -- {response}\n")
 
 
 ##### End of helpers functions #####

@@ -1,15 +1,19 @@
+#####################################################################################################
+#################### This file processor is design to work with custom models #######################
+#####################################################################################################
+
 from pathlib import Path
 from docx import Document
 from dataclasses import dataclass
 
 from ollama_client import LLMClient
-from json_logger import setup_json_logger
+from txt_logger import setup_txt_logger
 
 from pathlib import Path
 
 # Setup json logger
-log_file_path = Path(__file__).parent / "file_processor_v2_log.json"
-json_logger = setup_json_logger(__name__, log_file_path)
+log_file_path = Path(__file__).parent / "file_processor_v2_log.txt"
+txt_logger = setup_txt_logger(__name__, log_file_path)
 
 
 @dataclass(slots=True)
@@ -17,7 +21,7 @@ class ProcessFilesConfig:
     files_text: list[str]
     model_name: str
     client: LLMClient
-    system_role: str | None
+    text_topic: str | None
     output_file_name: str | None
 
 
@@ -33,11 +37,12 @@ def process_files(config: ProcessFilesConfig) -> None:
         if file_path == "TEMA.docx":
             continue  
         messages: list[dict[str, str]] = []
-        messages.append({"role": "system", "content": config.system_role or ""})
+        messages.append({"role": "system", "content": config.text_topic or ""})
         messages.append({"role": "user", "content": text})
 
-        json_logger.info({"variable": "config.system_role", "value": config.system_role})
-        json_logger.info({"variable": "text", "value": text})
+        txt_logger.info({"variable": "model name", "value": config.model_name})
+        txt_logger.info({"variable": "config.system_role", "value": config.text_topic})
+        txt_logger.info({"variable": "text", "value": text})
 
         response: str = config.client.chat(
             model_name=config.model_name,
@@ -45,7 +50,7 @@ def process_files(config: ProcessFilesConfig) -> None:
             options=config.client.options,
         )
 
-        json_logger.info({"variable": "response", "value": response})
+        txt_logger.info({"variable": "response", "value": response})
 
         if config.output_file_name:
             save_response_to_file(response, file_path, config.output_file_name)

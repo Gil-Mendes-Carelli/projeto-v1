@@ -77,3 +77,17 @@ general-study/file_processor_v2_log.json
 .gitignore
 .gitignore
 general-study/ollama_client_log.json
+general-study/c1-prompt.txt
+.gitignore
+.gitignore
+general-study/c2-prompt.txt
+general-study/c3-prompt.txt
+general-study/c4-prompt.txt
+general-study/c5-prompt.txt
+general-study/classification-prompt-gemma.txt
+general-study/classification-prompt.txt
+general-study/classification_results.txt
+general-study/file-proc-log.txt
+.gitignore
+general-study/file-proc-v2-log.txt
+general-study/ollama-client-log.txt
