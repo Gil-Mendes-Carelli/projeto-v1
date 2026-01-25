@@ -51,12 +51,13 @@ def process_files(config: ProcessFilesConfig) -> None:
     #         save_response_to_file(response, config.output_file_name)
     #     else:
     #         raise ValueError("Output file name is not valid.")
+    txt_logger.info({"variable": "model name", "value": config.model_name})
+        
     for file_path, text in config.files_text:
         messages: list[dict[str, str]] = []
         messages.append({"role": "system", "content": config.system_role or ""})
         messages.append({"role": "user", "content": text})
-
-        txt_logger.info({"variable": "model name", "value": config.model_name})
+        
         txt_logger.info({"variable": "config.system_role", "value": config.system_role})
         txt_logger.info({"variable": "text", "value": text})
 

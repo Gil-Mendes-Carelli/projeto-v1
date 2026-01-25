@@ -12,8 +12,8 @@ txt_logger = setup_txt_logger(__name__, log_file_path)
 # model's parameters constants
 TEMPERATURE = 0.2
 TOP_P = 0.9
-# TOP_K = 40
-# REPEAT_PENALTY = 1.1
+TOP_K = 40
+REPEAT_PENALTY = 1.1
 
 class LLMClient(Protocol):
     def chat(self, model_name: str, messages: List[Dict[str, Any]]) -> str: ...
@@ -33,8 +33,8 @@ class OllamaClient(LLMClient):
         self.options = {
             "temperature": TEMPERATURE,
             "top_p": TOP_P,
-            # "top_k": TOP_K,
-            # "repeat_penalty": REPEAT_PENALTY,
+            "top_k": TOP_K,
+            "repeat_penalty": REPEAT_PENALTY,
         }
 
     def connect_to_host(self, host_url: str) -> "OllamaClient":
