@@ -16,7 +16,7 @@ TOP_K = 40
 REPEAT_PENALTY = 1.1
 
 class LLMClient(Protocol):
-    def chat(self, model_name: str, messages: List[Dict[str, Any]]) -> str: ...
+    def connect_to_host(self, host_url: str) -> "OllamaClient": ...
 
 
 class OllamaConnectionError(Exception):
@@ -110,6 +110,8 @@ class OllamaClient(LLMClient):
             txt_logger.info({"variable": "chat_status", "value": error_message})
             return ""
 
+def main() -> None:
+    pass
 
 if __name__ == "__main__":
-    pass
+    main()

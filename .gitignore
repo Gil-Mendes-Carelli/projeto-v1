@@ -92,3 +92,13 @@ general-study/file-proc-log.txt
 general-study/file-proc-v2-log.txt
 general-study/ollama-client-log.txt
 general-study/classification_results.txt
+general-study/llm_client/ollama-client-log.txt
+general-study/llm_prompts/c1-prompt.txt
+general-study/llm_prompts/c2-prompt.txt
+general-study/llm_prompts/c3-prompt.txt
+general-study/llm_prompts/c4-prompt.txt
+general-study/llm_prompts/c5-prompt.txt
+general-study/llm_prompts/classification-prompt-gemma.txt
+general-study/llm_prompts/classification-prompt.txt
+general-study/processors/file-proc-log.txt
+general-study/processors/file-proc-v2-log.txt

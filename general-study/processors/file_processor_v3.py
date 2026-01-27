@@ -5,6 +5,7 @@
 from pathlib import Path
 from docx import Document
 from dataclasses import dataclass
+from typing import Callable
 
 from ollama_client import LLMClient
 from txt_logger import setup_txt_logger
@@ -22,7 +23,7 @@ class ProcessFilesConfig:
     model_name: str
     client: LLMClient
     text_topic: str | None
-    output_file_name: str | None
+    save_function: Callable[[Path, str, str], None]
 
 
 def process_files(config: ProcessFilesConfig) -> None:
@@ -52,12 +53,10 @@ def process_files(config: ProcessFilesConfig) -> None:
 
         txt_logger.info({"variable": "response", "value": response})
 
-        if config.output_file_name:
-            save_response_to_file(
-                file_path, response, file_name, config.output_file_name
-            )
+        if config.save_function:
+            config.save_function(file_path, response, file_name)
         else:
-            raise ValueError("Output file name is not valid.")
+            raise ValueError("Output function is missing.")
 
 ##### Helpers functions #####
 def load_file_texts_from_folder(folder_path: Path) ->  list[tuple[str, str, str]]:
@@ -112,18 +111,31 @@ def load_system_role_from_file(file_path: Path) -> str:
     return system_role
 
 def load_label_from_file(file_path: Path) -> str:
-    with file_path.open("r", encoding="utf-8") as f:
-        doc = Document(file_path)
-
-    # Backwards Iteration
-    for paragraph in reversed(doc.paragraphs):
+    doc = Document(file_path)
+    label_values: list[int] = []
+    
+    for paragraph in doc.paragraphs:
         text = paragraph.text.strip()
-        if text:  
-            return text
+        
+        # Verifica se a linha contém apenas um número
+        if text.isdigit():
+            label_values.append(int(text))
 
-    return ""
+    return label_values
 
-def save_response_to_file(
+def save_classification_response_to_file(
+    file_path: Path,
+    response: str,
+    source_file_name: str,
+    output_file: Path = Path("classification_results.txt"),
+) -> None:
+    output_file = Path.cwd() / output_file
+    with output_file.open("a", encoding="utf-8") as f:
+        f.write(
+            f"{source_file_name} -- {response} -- label -- {load_label_from_file(file_path)}\n"
+        )
+        
+def save_grading_response_to_file(
     file_path: Path,
     response: str,
     source_file_name: str,
