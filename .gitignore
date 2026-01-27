@@ -102,3 +102,11 @@ general-study/llm_prompts/classification-prompt-gemma.txt
 general-study/llm_prompts/classification-prompt.txt
 general-study/processors/file-proc-log.txt
 general-study/processors/file-proc-v2-log.txt
+general-study/llm-client/ollama-client-log.txt
+general-study/llm-prompts/c1-prompt.txt
+general-study/llm-prompts/c2-prompt.txt
+general-study/llm-prompts/c3-prompt.txt
+general-study/llm-prompts/c4-prompt.txt
+general-study/llm-prompts/c5-prompt.txt
+general-study/llm-prompts/classification-prompt-gemma.txt
+general-study/llm-prompts/classification-prompt.txt
