@@ -1,5 +1,5 @@
 [project]
-name = "general-study"
+name = "general_study"
 version = "0.1.10"
 description = "Local Python study project"
 requires-python = ">=3.11"
@@ -10,4 +10,4 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["llm_client*", "processors*", "logger*", "helper-functions*"]
+include = ["host*", "processors*", "logger*", "helper_functions*"]

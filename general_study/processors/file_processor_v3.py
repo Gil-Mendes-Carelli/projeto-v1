@@ -7,10 +7,8 @@ from docx import Document
 from dataclasses import dataclass
 from typing import Callable
 
-from ollama_client import LLMClient
-from txt_logger import setup_txt_logger
-
-from pathlib import Path
+from host.llm_host import HostClient
+from logger.txt_logger import setup_txt_logger
 
 # Setup json logger
 log_file_path = Path(__file__).parent / "file_processor_v3_log.txt"
@@ -21,7 +19,7 @@ txt_logger = setup_txt_logger(__name__, log_file_path)
 class ProcessFilesConfig:
     files_text: list[tuple[str, str, str]]
     model_name: str
-    client: LLMClient
+    client: HostClient
     text_topic: str | None
     save_function: Callable[[Path, str, str], None]
 
@@ -117,7 +115,7 @@ def load_label_from_file(file_path: Path) -> str:
     for paragraph in doc.paragraphs:
         text = paragraph.text.strip()
         
-        # Verifica se a linha contém apenas um número
+        # check if the text is a digit
         if text.isdigit():
             label_values.append(int(text))
 

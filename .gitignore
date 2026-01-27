@@ -16,8 +16,9 @@ venv/
 # -----------------------------
 chatgpt-ocr/
 old/
-general-study/essays/
-
+general_study/essays/
+general_study/llm_prompts/
+general_study/Notebooks/
 # -----------------------------
 # Scripts / Notebooks
 # -----------------------------
@@ -61,52 +62,8 @@ Thumbs.db
 # -----------------------------
 # Files
 # -----------------------------
-grade-rule-1.txt
-grade-rule-2.txt
-grade-rule-3.txt
-grade-rule-4.txt
-grade-rule-5.txt
-classification-rules.txt
-consolidation_prompt.txt
-classification-rules-gemma.txt
-classification_results.txt
-general-study/classification_results.txt
-general-study/classification_results.txt
-general-study/file_processor_v2_log.json
-.gitignore
-.gitignore
-.gitignore
-general-study/ollama_client_log.json
-general-study/c1-prompt.txt
-.gitignore
-.gitignore
-general-study/c2-prompt.txt
-general-study/c3-prompt.txt
-general-study/c4-prompt.txt
-general-study/c5-prompt.txt
-general-study/classification-prompt-gemma.txt
-general-study/classification-prompt.txt
-general-study/classification_results.txt
-general-study/file-proc-log.txt
-.gitignore
-general-study/file-proc-v2-log.txt
-general-study/ollama-client-log.txt
-general-study/classification_results.txt
-general-study/llm_client/ollama-client-log.txt
-general-study/llm_prompts/c1-prompt.txt
-general-study/llm_prompts/c2-prompt.txt
-general-study/llm_prompts/c3-prompt.txt
-general-study/llm_prompts/c4-prompt.txt
-general-study/llm_prompts/c5-prompt.txt
-general-study/llm_prompts/classification-prompt-gemma.txt
-general-study/llm_prompts/classification-prompt.txt
-general-study/processors/file-proc-log.txt
-general-study/processors/file-proc-v2-log.txt
-general-study/llm-client/ollama-client-log.txt
-general-study/llm-prompts/c1-prompt.txt
-general-study/llm-prompts/c2-prompt.txt
-general-study/llm-prompts/c3-prompt.txt
-general-study/llm-prompts/c4-prompt.txt
-general-study/llm-prompts/c5-prompt.txt
-general-study/llm-prompts/classification-prompt-gemma.txt
-general-study/llm-prompts/classification-prompt.txt
+general_study/host/ollama-client-log.txt
+general_study/processors/file_processor_v3_log.txt
+general_study/processors/file-proc-log.txt
+general_study/processors/file-proc-v2-log.txt
+general_study/study-txt-output/classification_results.txt

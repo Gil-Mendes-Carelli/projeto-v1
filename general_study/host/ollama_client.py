@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 import ollama
 from typing import List, Dict, Any, Protocol
-from logger_config import log
-from txt_logger import setup_txt_logger
+from logger.logger_config import log
+from logger.txt_logger import setup_txt_logger
 from pathlib import Path
+
+from .llm_host import HostClient
 
 # Setup json logger
 log_file_path = Path(__file__).parent / "ollama-client-log.txt"
@@ -15,15 +17,12 @@ TOP_P = 0.9
 TOP_K = 40
 REPEAT_PENALTY = 1.1
 
-class LLMClient(Protocol):
-    def connect_to_host(self, host_url: str) -> "OllamaClient": ...
-
 
 class OllamaConnectionError(Exception):
     pass
 
 
-class OllamaClient(LLMClient):
+class OllamaClient(HostClient):
 
     _client: ollama.Client | None
     options: Dict[str, float] | None
@@ -41,7 +40,12 @@ class OllamaClient(LLMClient):
         try:
             self._client = ollama.Client(host=host_url)
             log.info(f"Cliente Ollama conectado com sucesso ao host: {host_url}")
-            txt_logger.info({"variable": "connection_status", "value": f"Successfully connected to {host_url}"})
+            txt_logger.info(
+                {
+                    "variable": "connection_status",
+                    "value": f"Successfully connected to {host_url}",
+                }
+            )
             return self
         except Exception as e:
             error_message = f"Não foi possível conectar ao servidor Ollama em {host_url}. Detalhes: {e}"
@@ -55,11 +59,15 @@ class OllamaClient(LLMClient):
             self._client.create(model=model_name, from_=base_model, system=system_role)
             success_message = f"Modelo personalizado '{model_name}' criado com sucesso a partir do modelo base '{base_model}'."
             log.info(success_message)
-            txt_logger.info({"variable": "model_creation_status", "value": success_message})
+            txt_logger.info(
+                {"variable": "model_creation_status", "value": success_message}
+            )
         except Exception as e:
             error_message = f"Erro ao criar o modelo personalizado '{model_name}': {e}"
             log.error(error_message)
-            txt_logger.info({"variable": "model_creation_status", "value": error_message})
+            txt_logger.info(
+                {"variable": "model_creation_status", "value": error_message}
+            )
 
     def list_models(self) -> str:
         try:
@@ -96,13 +104,20 @@ class OllamaClient(LLMClient):
             options = self.options
         try:
             log.info(f"Enviando prompt para o modelo '{model_name}'...")
-            txt_logger.info({"variable": "chat_status", "value": f"Sending prompt to model '{model_name}'..."})
+            txt_logger.info(
+                {
+                    "variable": "chat_status",
+                    "value": f"Sending prompt to model '{model_name}'...",
+                }
+            )
             response = self._client.chat(
                 model=model_name, messages=messages, options=options
             )
             content = response.get("message", {}).get("content", "")
             log.info("Resposta recebida do modelo.")
-            txt_logger.info({"variable": "chat_status", "value": "Response received from model."})
+            txt_logger.info(
+                {"variable": "chat_status", "value": "Response received from model."}
+            )
             return content
         except Exception as e:
             error_message = f"Erro durante o chat com o modelo '{model_name}': {e}"
@@ -110,8 +125,10 @@ class OllamaClient(LLMClient):
             txt_logger.info({"variable": "chat_status", "value": error_message})
             return ""
 
+
 def main() -> None:
     pass
+
 
 if __name__ == "__main__":
     main()
