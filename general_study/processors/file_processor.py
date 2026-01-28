@@ -3,7 +3,6 @@
 #####################################################################################################
 
 from pathlib import Path
-from docx import Document
 from dataclasses import dataclass
 
 from host.llm_host import HostClient
