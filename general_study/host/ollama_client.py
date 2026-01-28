@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 import ollama
 from typing import List, Dict, Any, Protocol
 from logger.logger_config import log

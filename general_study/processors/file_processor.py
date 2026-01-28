@@ -1,30 +1,30 @@
 #####################################################################################################
 ############## This file processor is design to work with default installation models ###############
 #####################################################################################################
-
+################# It's main function is to process a text from a file through a LLM #################
+#####################################################################################################
+import os
 from pathlib import Path
 from dataclasses import dataclass
 
 from host.llm_host import HostClient
 from logger.txt_logger import setup_txt_logger
+from helper_functions.helper_functions import load_text_from_file
 
-from pathlib import Path
-
-# Setup json logger
+# Setup logger
 log_file_path = Path(__file__).parent / "file-proc-log.txt"
 txt_logger = setup_txt_logger(__name__, log_file_path)
 
 
 @dataclass(slots=True)
 class ProcessFilesConfig:
-    files_text: list[str]
+    file_path: Path
     model_name: str
     client: HostClient
     system_role: str | None
-    output_file_name: str | None
 
 
-def process_files(config: ProcessFilesConfig) -> None:
+def process_files(config: ProcessFilesConfig) -> str:
     """
     Process files using a LLM.
 
@@ -32,88 +32,33 @@ def process_files(config: ProcessFilesConfig) -> None:
         A ProcessFilesConfig objet with all configurations.
     """
     txt_logger.info({"variable": "model name", "value": config.model_name})
-        
-    for file_path, text in config.files_text:
-        messages: list[dict[str, str]] = []
-        messages.append({"role": "system", "content": config.system_role or ""})
-        messages.append({"role": "user", "content": text})
-        
-        txt_logger.info({"variable": "config.system_role", "value": config.system_role})
-        txt_logger.info({"variable": "text", "value": text})
 
-        response = config.client.chat(
-            model_name=config.model_name,
-            messages=messages,
-            options=config.client.options,
-        )
+    if config.file_path.exists() and config.file_path.isfile():
+        ignored_file = os.getenv("IGNORED_FILE_NAME")
+        if config.file_path.name != ignored_file:
+            file_text: str = load_text_from_file(config.file_path)
+            messages: list[dict[str, str]] = []
+            messages.append({"role": "system", "content": config.system_role or ""})
+            messages.append({"role": "user", "content": file_text})
 
-        txt_logger.info({"variable": "response", "value": response})
+            txt_logger.info(
+                {"variable": "config.system_role", "value": config.system_role}
+            )
+            txt_logger.info({"variable": "text", "value": file_text})
 
-        if config.output_file_name:
-            save_response_to_file(response, file_path, config.output_file_name)
-        else:
-            raise ValueError("Output file name is not valid.")
+            response: str = config.client.chat(
+                model_name=config.model_name,
+                messages=messages,
+                options=config.client.options,
+            )
 
-##### Helpers functions #####
-def load_file_texts_from_folder(folder_path: Path) ->  list[tuple[str, str]]:
-    results: list[tuple[str, str]] = []
+            txt_logger.info({"variable": "response", "value": response})
 
-    for path in folder_path.iterdir():
-        if path.is_file() and path.suffix.lower() == ".docx":
-            document: Document = Document(path)
+            return response
 
-            paragraphs_text: list[str] = []
-            consecutive_empty_count = 0
+        return ""
 
-            for paragraph in document.paragraphs:
-                is_empty = (paragraph.text.strip() == "")
-
-                if is_empty:
-                    consecutive_empty_count += 1
-                else:
-                    consecutive_empty_count = 0
-
-                if consecutive_empty_count == 2:
-                    # Stop reading further, excluding these empty paragraphs
-                    break
-
-                paragraphs_text.append(paragraph.text)
-
-            content = "\n".join(paragraphs_text)
-            results.append((path.name, content))
-
-    return results
-    
-def load_topic_from_file(file_path: Path) -> str:
-    if not file_path.exists() or not file_path.is_file():
-        raise FileNotFoundError(f"File not found: {file_path}")
-
-    document = Document(file_path)
-    paragraphs = [p.text for p in document.paragraphs]
-    topic = "\n".join(paragraphs)
-
-    return topic
-
-
-def load_system_role_from_file(file_path: Path) -> str:
-    if not file_path.exists() or not file_path.is_file():
-        raise FileNotFoundError(f"File not found: {file_path}")
-
-    with file_path.open("r", encoding="utf-8") as f:
-        system_role: str = f.read()
-        system_role += "\n"
-
-    return system_role
-
-def save_response_to_file(
-    response: str,
-    source_file_name: str,
-    output_file: Path = Path("classification_results.txt")
-) -> None:
-    output_file = Path.cwd() / output_file
-    with output_file.open("a", encoding="utf-8") as f:
-        f.write(f"{source_file_name} -- {response}\n")
-##### End of helpers functions #####
+    raise FileNotFoundError(f"File not found: {config.file_path}")
 
 
 def main() -> None:
@@ -122,3 +67,10 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+    # if config.output_file_name:
+    #     save_response_to_file(
+    #         response, config.file_path.name, config.output_file_name
+    #     )
+    # else:
+    #     raise ValueError("Output file name is not valid.")
