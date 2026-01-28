@@ -24,7 +24,7 @@ class ProcessFilesConfig:
     system_role: str | None
 
 
-def process_files(config: ProcessFilesConfig) -> str:
+def process_file(config: ProcessFilesConfig) -> str:
     """
     Process files using a LLM.
 
@@ -33,30 +33,26 @@ def process_files(config: ProcessFilesConfig) -> str:
     """
     txt_logger.info({"variable": "model name", "value": config.model_name})
 
-    if config.file_path.exists() and config.file_path.isfile():
-        ignored_file = os.getenv("IGNORED_FILE_NAME")
-        if config.file_path.name != ignored_file:
-            file_text: str = load_text_from_file(config.file_path)
-            messages: list[dict[str, str]] = []
-            messages.append({"role": "system", "content": config.system_role or ""})
-            messages.append({"role": "user", "content": file_text})
+    if config.file_path.exists() and config.file_path.isfile():        
+        file_text: str = load_text_from_file(config.file_path)
+        messages: list[dict[str, str]] = []
+        messages.append({"role": "system", "content": config.system_role or ""})
+        messages.append({"role": "user", "content": file_text})
 
-            txt_logger.info(
-                {"variable": "config.system_role", "value": config.system_role}
-            )
-            txt_logger.info({"variable": "text", "value": file_text})
+        txt_logger.info(
+            {"variable": "config.system_role", "value": config.system_role}
+        )
+        txt_logger.info({"variable": "text", "value": file_text})
 
-            response: str = config.client.chat(
-                model_name=config.model_name,
-                messages=messages,
-                options=config.client.options,
-            )
+        response: str = config.client.chat(
+            model_name=config.model_name,
+            messages=messages,
+            options=config.client.options,
+        )
 
-            txt_logger.info({"variable": "response", "value": response})
+        txt_logger.info({"variable": "response", "value": response})
 
-            return response
-
-        return ""
+        return response
 
     raise FileNotFoundError(f"File not found: {config.file_path}")
 
@@ -74,3 +70,5 @@ if __name__ == "__main__":
     #     )
     # else:
     #     raise ValueError("Output file name is not valid.")
+# ignored_file = os.getenv("IGNORED_FILE_NAME")
+        # if config.file_path.name != ignored_file:

@@ -1,6 +1,7 @@
 ##########################################################
 ########## Script for general helper functions ##########
 ##########################################################
+import os
 from pathlib import Path
 from docx import Document
 
@@ -64,7 +65,7 @@ def save_response_to_file(
 ) -> None:
     output_file = Path.cwd() / output_file
     with output_file.open("a", encoding="utf-8") as f:
-        f.write(f"{source_file_name} -- {response}\n")
+        f.write(f"{source_file_name},{response}\n")
 
 
 def remove_blank_lines_from_txt_file(file_path: str) -> None:
@@ -75,6 +76,45 @@ def remove_blank_lines_from_txt_file(file_path: str) -> None:
 
     with open(file_path, "w", encoding="utf-8") as f:
         f.writelines(non_blank_lines)
+
+
+def load_label_from_file(file_path: Path) -> list[int]:
+    doc = Document(file_path)
+    label_values: list[int] = []
+
+    for paragraph in doc.paragraphs:
+        text = paragraph.text.strip()
+
+        # check if the text is a digit
+        if text.isdigit():
+            label_values.append(int(text))
+
+    return label_values
+
+
+def remove_ignored_file(
+    file_path_list: list[Path], ignored_filename: str = os.getenv("IGNORED_FILE_NAME")
+) -> list[Path]:
+    if not ignored_filename:
+        raise ValueError("IGNORED_FILE_NAME não configurado no .env")
+
+    return [f for f in file_path_list if f.name != ignored_filename]
+
+# Can use the load_text_from_file instead?
+# def get_target_file_text(
+#     file_path_list: list[Path], target_filename: str = os.getenv("IGNORED_FILE_NAME")
+# ) -> str:
+#     if not target_filename:
+#         raise ValueError("IGNORED_FILE_NAME não configurado no .env")
+
+#     for file_path in file_path_list:
+#         if file_path.name == target_filename:
+#             if file_path.suffix.lower() == ".docx":
+#                 document = Document(file_path)
+#                 paragraphs = [p.text for p in document.paragraphs]
+#                 return "\n".join(paragraphs)
+    
+#     raise FileNotFoundError(f"Arquivo '{target_filename}' não encontrado na lista")
 
 
 ##### End of helpers functions #####
