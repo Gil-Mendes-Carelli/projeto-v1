@@ -1,80 +1,117 @@
-A era da reinvenção profissional.docx -- 1 -- label -- 560
-A qualificação profissional no Brasil.docx -- 1 -- label -- 520
-Aumento do desemprego no mundo tecnológico.docx -- 1 -- label -- 600
-Avanços tecnológicos.docx -- 0 -- label -- 0
-Evolução ou regressão humana.docx -- 1 -- label -- 560
-Futuro da crise do desemprego.docx -- 1 -- label -- 400
-Nações unidas contra o desemprego.docx -- 1 -- label -- 600
-O advento tecnológico.docx -- 1 -- label -- 640
-O emprego do futuro.docx -- 1 -- label -- 520
-O futuro dos desempregados no Brasil.docx -- 1 -- label -- 400
-O progresso da tecnologia.docx -- 1 -- label -- 760
-Os impasses do desemprego aliado às mudanças sociais.docx -- 1 -- label -- 400
-Peão também é gente.docx -- 1 -- label -- 640
-Procura-se futuro.docx -- 1 -- label -- 680
-Qualificação Coerente.docx -- 1 -- label -- 480
-Qualificação e o futuro do emprego.docx -- 1 -- label -- 440
-Qualificação será o futuro do emprego.docx -- 1 -- label -- 220
-Qualificações para o mercado de trabalho.docx -- 1 -- label -- 480
-Tempos de IA_.docx -- 1 -- label -- 680
-Transformações laborais.docx -- 1 -- label -- 600
-A era da reinvenção profissional.docx -- 1 -- label -- 560
-A qualificação profissional no Brasil.docx -- 1 -- label -- 520
-Aumento do desemprego no mundo tecnológico.docx -- 1 -- label -- 600
-Avanços tecnológicos.docx -- 0 -- label -- 0
-Evolução ou regressão humana.docx -- 1 -- label -- 560
-Futuro da crise do desemprego.docx -- 1 -- label -- 400
-Nações unidas contra o desemprego.docx -- 1 -- label -- 600
-O advento tecnológico.docx -- 1 -- label -- 640
-O emprego do futuro.docx -- 1 -- label -- 520
-O futuro dos desempregados no Brasil.docx -- 1 -- label -- 400
-O progresso da tecnologia.docx -- 1 -- label -- 760
-Os impasses do desemprego aliado às mudanças sociais.docx -- 1 -- label -- 400
-Peão também é gente.docx -- 1 -- label -- 640
-Procura-se futuro.docx -- 1 -- label -- 680
-Qualificação Coerente.docx -- 1 -- label -- 480
-Qualificação e o futuro do emprego.docx -- 1 -- label -- 440
-Qualificação será o futuro do emprego.docx -- 1 -- label -- 220
-Qualificações para o mercado de trabalho.docx -- 1 -- label -- 480
-Tempos de IA_.docx -- 1 -- label -- 680
-Transformações laborais.docx -- 1 -- label -- 600
-A era da reinvenção profissional.docx -- 1 -- label -- 560
-A qualificação profissional no Brasil.docx -- 1 -- label -- 520
-Aumento do desemprego no mundo tecnológico.docx -- 1 -- label -- 600
-Avanços tecnológicos.docx -- 0 -- label -- 0
-Evolução ou regressão humana.docx -- 1 -- label -- 560
-Futuro da crise do desemprego.docx -- 1 -- label -- 400
-Nações unidas contra o desemprego.docx -- 1 -- label -- 600
-O advento tecnológico.docx -- 1 -- label -- 640
-O emprego do futuro.docx -- 1 -- label -- 520
-O futuro dos desempregados no Brasil.docx -- 1 -- label -- 400
-O progresso da tecnologia.docx -- 1 -- label -- 760
-Os impasses do desemprego aliado às mudanças sociais.docx -- 1 -- label -- 400
-Peão também é gente.docx -- 1 -- label -- 640
-Procura-se futuro.docx -- 1 -- label -- 680
-Qualificação Coerente.docx -- 1 -- label -- 480
-Qualificação e o futuro do emprego.docx -- 1 -- label -- 440
-Qualificação será o futuro do emprego.docx -- 1 -- label -- 220
-Qualificações para o mercado de trabalho.docx -- 1 -- label -- 480
-Tempos de IA_.docx -- 1 -- label -- 680
-Transformações laborais.docx -- 1 -- label -- 600
-A era da reinvenção profissional.docx -- 1 -- label -- 560
-A qualificação profissional no Brasil.docx -- 1 -- label -- 520
-Aumento do desemprego no mundo tecnológico.docx -- 1 -- label -- 600
-Avanços tecnológicos.docx -- 0 -- label -- 0
-Evolução ou regressão humana.docx -- 1 -- label -- 560
-Futuro da crise do desemprego.docx -- 1 -- label -- 400
-Nações unidas contra o desemprego.docx -- 1 -- label -- 600
-O advento tecnológico.docx -- 1 -- label -- 640
-O emprego do futuro.docx -- 1 -- label -- 520
-O futuro dos desempregados no Brasil.docx -- 1 -- label -- 400
-O progresso da tecnologia.docx -- 1 -- label -- 760
-Os impasses do desemprego aliado às mudanças sociais.docx -- 1 -- label -- 400
-Peão também é gente.docx -- 1 -- label -- 640
-Procura-se futuro.docx -- 1 -- label -- 680
-Qualificação Coerente.docx -- 1 -- label -- 480
-Qualificação e o futuro do emprego.docx -- 1 -- label -- 440
-Qualificação será o futuro do emprego.docx -- 1 -- label -- 220
-Qualificações para o mercado de trabalho.docx -- 1 -- label -- 480
-Tempos de IA_.docx -- 1 -- label -- 680
-Transformações laborais.docx -- 1 -- label -- 600
+A Amazônia é nossa.docx,1
+A Caixa de Pandora Brasileira.docx,1
+A falsa posse sob [sobre] a natureza.docx,1
+Amazonas, um bem de todos nós.docx,1
+Amazonas.docx,1
+Amazônia deve ser preocupação da população brasileira.docx,1
+Amazônia e o mundo.docx,1
+Amazônia e sua riqueza compartilhada.docx,1
+Amazônia em foco.docx,1
+Cooperação Mundial.docx,1
+Corrigindo erros.docx,1
+Floresta Amazônica_ um problema global.docx,1
+O dilema que circunda a preservação da floresta amazônica.docx,1
+Preservação da Amazônia_ Responsabilidade nacional ou internacional.docx,1
+Preservação do meio ambiente, um dever de todos.docx,1
+Problemas ambientais críticos.docx,1
+Pulmões limpos e estômagos vazios.docx,1
+Recentemente acompanhamos a grande repercussão.docx,1
+somos responsável [Somos responsáveis].docx,1
+A era da reinvenção profissional.docx,1
+A qualificação profissional no Brasil.docx,1
+Aumento do desemprego no mundo tecnológico.docx,1
+Avanços tecnológicos.docx,1
+Evolução ou regressão humana.docx,1
+Futuro da crise do desemprego.docx,1
+Nações unidas contra o desemprego.docx,1
+O advento tecnológico.docx,1
+O emprego do futuro.docx,1
+O futuro dos desempregados no Brasil.docx,1
+O progresso da tecnologia.docx,1
+Os impasses do desemprego aliado às mudanças sociais.docx,1
+Peão também é gente.docx,1
+Procura-se futuro.docx,1
+Qualificação Coerente.docx,1
+Qualificação e o futuro do emprego.docx,1
+Qualificação será o futuro do emprego.docx,1
+Qualificações para o mercado de trabalho.docx,1
+Tempos de IA_.docx,1
+Transformações laborais.docx,1
+A Amazônia é nossa.docx,1
+A Caixa de Pandora Brasileira.docx,1
+A falsa posse sob [sobre] a natureza.docx,1
+Amazonas, um bem de todos nós.docx,1
+Amazonas.docx,1
+Amazônia deve ser preocupação da população brasileira.docx,1
+Amazônia e o mundo.docx,1
+Amazônia e sua riqueza compartilhada.docx,1
+Amazônia em foco.docx,1
+Cooperação Mundial.docx,1
+Corrigindo erros.docx,1
+Floresta Amazônica_ um problema global.docx,1
+O dilema que circunda a preservação da floresta amazônica.docx,1
+Preservação da Amazônia_ Responsabilidade nacional ou internacional.docx,1
+Preservação do meio ambiente, um dever de todos.docx,1
+Problemas ambientais críticos.docx,1
+Pulmões limpos e estômagos vazios.docx,1
+Recentemente acompanhamos a grande repercussão.docx,1
+somos responsável [Somos responsáveis].docx,1
+A era da reinvenção profissional.docx,1
+A qualificação profissional no Brasil.docx,1
+Aumento do desemprego no mundo tecnológico.docx,1
+Avanços tecnológicos.docx,1
+Evolução ou regressão humana.docx,0
+Futuro da crise do desemprego.docx,1
+Nações unidas contra o desemprego.docx,1
+O advento tecnológico.docx,1
+O emprego do futuro.docx,1
+O futuro dos desempregados no Brasil.docx,1
+O progresso da tecnologia.docx,1
+Os impasses do desemprego aliado às mudanças sociais.docx,1
+Peão também é gente.docx,1
+Procura-se futuro.docx,1
+Qualificação Coerente.docx,1
+Qualificação e o futuro do emprego.docx,1
+Qualificação será o futuro do emprego.docx,1
+Qualificações para o mercado de trabalho.docx,1
+Tempos de IA_.docx,1
+Transformações laborais.docx,1
+A Amazônia é nossa.docx,1
+A Caixa de Pandora Brasileira.docx,1
+A falsa posse sob [sobre] a natureza.docx,1
+Amazonas, um bem de todos nós.docx,1
+Amazonas.docx,1
+Amazônia deve ser preocupação da população brasileira.docx,1
+Amazônia e o mundo.docx,1
+Amazônia e sua riqueza compartilhada.docx,1
+Amazônia em foco.docx,1
+Cooperação Mundial.docx,1
+Corrigindo erros.docx,1
+Floresta Amazônica_ um problema global.docx,1
+O dilema que circunda a preservação da floresta amazônica.docx,1
+Preservação da Amazônia_ Responsabilidade nacional ou internacional.docx,1
+Preservação do meio ambiente, um dever de todos.docx,1
+Problemas ambientais críticos.docx,1
+Pulmões limpos e estômagos vazios.docx,1
+Recentemente acompanhamos a grande repercussão.docx,1
+somos responsável [Somos responsáveis].docx,1
+A era da reinvenção profissional.docx,1
+A qualificação profissional no Brasil.docx,1
+Aumento do desemprego no mundo tecnológico.docx,1
+Avanços tecnológicos.docx,1
+Evolução ou regressão humana.docx,0
+Futuro da crise do desemprego.docx,1
+Nações unidas contra o desemprego.docx,1
+O advento tecnológico.docx,1
+O emprego do futuro.docx,1
+O futuro dos desempregados no Brasil.docx,1
+O progresso da tecnologia.docx,1
+Os impasses do desemprego aliado às mudanças sociais.docx,1
+Peão também é gente.docx,1
+Procura-se futuro.docx,1
+Qualificação Coerente.docx,1
+Qualificação e o futuro do emprego.docx,1
+Qualificação será o futuro do emprego.docx,1
+Qualificações para o mercado de trabalho.docx,1
+Tempos de IA_.docx,1
+Transformações laborais.docx,1

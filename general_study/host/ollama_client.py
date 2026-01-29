@@ -11,9 +11,9 @@ log_file_path = Path(__file__).parent / "ollama-client-log.txt"
 txt_logger = setup_txt_logger(__name__, log_file_path)
 
 # model's parameters constants
-TEMPERATURE = 0.2
+TEMPERATURE = 0.1
 TOP_P = 0.9
-TOP_K = 40
+TOP_K = 30
 REPEAT_PENALTY = 1.1
 
 

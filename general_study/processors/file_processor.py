@@ -3,13 +3,12 @@
 #####################################################################################################
 ################# It's main function is to process a text from a file through a LLM #################
 #####################################################################################################
-import os
 from pathlib import Path
 from dataclasses import dataclass
 
 from host.llm_host import HostClient
 from logger.txt_logger import setup_txt_logger
-from helper_functions.helper_functions import load_text_from_file
+from helper_functions.helper_functions import load_text_from_docx_file
 
 # Setup logger
 log_file_path = Path(__file__).parent / "file-proc-log.txt"
@@ -18,7 +17,7 @@ txt_logger = setup_txt_logger(__name__, log_file_path)
 
 @dataclass(slots=True)
 class ProcessFilesConfig:
-    file_path: Path
+    file_path: Path | None
     model_name: str
     client: HostClient
     system_role: str | None
@@ -33,8 +32,8 @@ def process_file(config: ProcessFilesConfig) -> str:
     """
     txt_logger.info({"variable": "model name", "value": config.model_name})
 
-    if config.file_path.exists() and config.file_path.isfile():        
-        file_text: str = load_text_from_file(config.file_path)
+    if config.file_path.exists() and config.file_path.is_file():        
+        file_text: str = load_text_from_docx_file(config.file_path)
         messages: list[dict[str, str]] = []
         messages.append({"role": "system", "content": config.system_role or ""})
         messages.append({"role": "user", "content": file_text})
