@@ -1,0 +1,42 @@
+Peão também é gente.docx,DESCRITOR
+C
+NOTA
+120
+Peão também é gente.docx,DESCRITOR
+A
+NOTA
+160
+Peão também é gente.docx,DESCRITOR
+B
+NOTA
+160
+Peão também é gente.docx,[A] 200 — articulação eficiente e repertório diversificado de recursos coesivos  
+
+---
+
+### ETAPA 2 — MAPA FIXO
+A nota final DEVE ser exatamente:
+
+A → 200  
+B → 160  
+C → 120  
+D → 80  
+E → 40  
+F → 0  
+
+---
+
+### SAÍDA FINAL (FORMATO FECHADO)
+
+Retorne APENAS o bloco abaixo.
+Não escreva nenhum texto fora dele.
+
+
+DESCRITOR 
+<A|B|C|D|E|F>
+NOTA
+<0|40|80|120|160|200>
+Peão também é gente.docx,DESCRITOR 
+C  
+NOTA  
+120

@@ -1,0 +1,53 @@
+A Caixa de Pandora Brasileira.docx,DESCRITOR
+C
+NOTA
+120
+A Caixa de Pandora Brasileira.docx,[A] 200 — desenvolve o tema com argumentação consistente e repertório produtivo  
+[B] 160 — desenvolve o tema com boa argumentação e domínio da estrutura dissertativa  
+[C] 120 — desenvolve o tema com argumentação previsível e domínio mediano da estrutura  
+[D] 80 — domínio insuficiente da estrutura dissertativo-argumentativa ou cópia de motivadores  
+[E] 40 — tangencia o tema ou apresenta traços constantes de outros tipos textuais  
+[F] 0 — fuga ao tema ou não atendimento à estrutura dissertativo-argumentativa  
+
+---
+
+### ETAPA 2 — MAPA FIXO
+A nota final DEVE ser exatamente:
+
+A → 200  
+B → 160  
+C → 120  
+D → 80  
+E → 40  
+F → 0  
+
+---
+
+### SAÍDA FINAL (FORMATO FECHADO)
+
+Retorne APENAS o bloco abaixo.
+Não escreva nenhum texto fora dele.
+
+
+DESCRITOR
+<A|B|C|D|E|F>
+NOTA
+<0|40|80|120|160|200>
+
+[B] 160 — desenvolve o tema com boa argumentação e domínio da estrutura dissertativa
+A Caixa de Pandora Brasileira.docx,[A] 200 — informações, fatos e opiniões consistentes, bem organizados, com autoria clara  
+[B] 160 — informações, fatos e opiniões organizados, com indícios de autoria  
+[C] 120 — informações e argumentos pouco organizados e limitados aos textos motivadores  
+[D] 80 — informações desorganizadas ou contraditórias, limitadas aos textos motivadores  
+[E] 40 — informações pouco relacionadas ou incoerentes, sem defesa clara de ponto de vista  
+[F] 0 — informações não relacionadas ao tema e ausência de ponto de vista  
+
+Nota: <A>
+A Caixa de Pandora Brasileira.docx,DESCRITOR 
+A
+NOTA
+200
+A Caixa de Pandora Brasileira.docx,DESCRITOR 
+C  
+NOTA  
+120

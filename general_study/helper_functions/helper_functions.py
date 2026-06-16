@@ -1,12 +1,10 @@
-##########################################################
-########## Script for general helper functions ##########
-##########################################################
 import os
 from pathlib import Path
 from docx import Document
 
 
 ##### Helpers functions #####
+
 def load_text_from_docx_file(file_path: Path) -> str:
     if not file_path.exists() or not file_path.is_file():
         raise FileNotFoundError(f"File not found: {file_path}")
@@ -46,36 +44,13 @@ def load_text_from_txt_file(file_path: Path) -> str:
     
     return content
 
-# replaced by the function load_text_from_txt_file
-# def load_topic_from_file(file_path: Path) -> str:
-#     if not file_path.exists() or not file_path.is_file():
-#         raise FileNotFoundError(f"File not found: {file_path}")
-
-#     document = Document(file_path)
-#     paragraphs = [p.text for p in document.paragraphs]
-#     topic = "\n".join(paragraphs)
-
-#     return topic
-
-# can use load_text_from_docx_file instead of this function?
-# def load_system_role_from_file(file_path: Path) -> str:
-#     if not file_path.exists() or not file_path.is_file():
-#         raise FileNotFoundError(f"File not found: {file_path}")
-
-#     with file_path.open("r", encoding="utf-8") as f:
-#         system_role: str = f.read()
-#         system_role += "\n"
-
-#     return system_role
-
 
 def save_response_to_file(
     response: str,
     source_file_name: str,
-    output_file: Path = Path("classification_results.txt"),
-) -> None:
-    output_file = Path.cwd() / output_file
-    with output_file.open("a", encoding="utf-8") as f:
+    output_file_path: Path,
+) -> None:    
+    with output_file_path.open("a", encoding="utf-8") as f:
         f.write(f"{source_file_name},{response}\n")
 
 
@@ -111,8 +86,8 @@ def remove_ignored_file_from_path_list(
     return [f for f in file_path_list if f.name != ignored_filename]
 
 # this one can't be replaced since it loads integer labels specifically from docx files
-def load_label_from_file(file_path: Path) -> list[int]:
-    doc = Document(file_path)
+def load_label_from_docx_file(file_path: Path) -> list[int]:
+    doc: Document = Document(file_path)
     label_values: list[int] = []
 
     for paragraph in doc.paragraphs:
@@ -130,23 +105,26 @@ def clear_txt_file(file_path: Path) -> None:
         raise FileNotFoundError(f"File not found: {file_path}")
     file_path.open("w", encoding="utf-8").close()
     
+# this function needs to be rethought since the new methodology development 
+def calculate_averages_per_index(values: list[list[int]]) -> list[float]:
+    if not values:
+        return []
+
+    list_length: int = len(values)
+    index_amount: int = len(values[0])
+
+    sum_per_index: list[int] = [0] * index_amount
+
+    for sublist in values:
+        for index, value in enumerate(sublist):
+            sum_per_index[index] += value
+
+    averages: list[float] = [
+        total / list_length for total in sum_per_index
+    ]
+
+    return averages
     
-# Can use load_text_from_file instead of this function?
-# def get_target_file_text(
-#     file_path_list: list[Path], target_filename: str = os.getenv("IGNORED_FILE_NAME")
-# ) -> str:
-#     if not target_filename:
-#         raise ValueError("IGNORED_FILE_NAME não configurado no .env")
-
-#     for file_path in file_path_list:
-#         if file_path.name == target_filename:
-#             if file_path.suffix.lower() == ".docx":
-#                 document = Document(file_path)
-#                 paragraphs = [p.text for p in document.paragraphs]
-#                 return "\n".join(paragraphs)
-
-#     raise FileNotFoundError(f"Arquivo '{target_filename}' não encontrado na lista")
-
 
 ##### End of helpers functions #####
 

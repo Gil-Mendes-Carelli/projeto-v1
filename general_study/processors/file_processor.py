@@ -24,12 +24,6 @@ class ProcessFilesConfig:
 
 
 def process_file(config: ProcessFilesConfig) -> str:
-    """
-    Process files using a LLM.
-
-    Args:
-        A ProcessFilesConfig objet with all configurations.
-    """
     txt_logger.info({"variable": "model name", "value": config.model_name})
 
     if config.file_path.exists() and config.file_path.is_file():        
@@ -62,12 +56,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-    # if config.output_file_name:
-    #     save_response_to_file(
-    #         response, config.file_path.name, config.output_file_name
-    #     )
-    # else:
-    #     raise ValueError("Output file name is not valid.")
-# ignored_file = os.getenv("IGNORED_FILE_NAME")
-        # if config.file_path.name != ignored_file:

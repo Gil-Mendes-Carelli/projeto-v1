@@ -1,5 +1,4 @@
 import ollama
-from typing import List, Dict, Any, Protocol
 from logger.logger_config import log
 from logger.txt_logger import setup_txt_logger
 from pathlib import Path
@@ -10,10 +9,10 @@ from .llm_host import HostClient
 log_file_path = Path(__file__).parent / "ollama-client-log.txt"
 txt_logger = setup_txt_logger(__name__, log_file_path)
 
-# model's parameters constants
-TEMPERATURE = 0.1
+# model's parameters 
+TEMPERATURE = 0.2
 TOP_P = 0.9
-TOP_K = 30
+# TOP_K = 20
 REPEAT_PENALTY = 1.1
 
 
@@ -24,14 +23,14 @@ class OllamaConnectionError(Exception):
 class OllamaClient(HostClient):
 
     _client: ollama.Client | None
-    options: Dict[str, float] | None
+    options: dict[str, float] | None
 
     def __init__(self) -> None:
         self._client: ollama.Client = None
         self.options = {
             "temperature": TEMPERATURE,
             "top_p": TOP_P,
-            "top_k": TOP_K,
+            # "top_k": TOP_K,
             "repeat_penalty": REPEAT_PENALTY,
         }
 
@@ -96,8 +95,8 @@ class OllamaClient(HostClient):
     def chat(
         self,
         model_name: str,
-        messages: List[Dict[str, Any]],
-        options: Dict[str, float] | None = None,
+        messages: list[dict[str, str]],
+        options: dict[str, float] | None = None,
     ) -> str:
         if options is None:
             options = self.options

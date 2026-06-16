@@ -1,0 +1,25 @@
+Amazônia em foco.docx,DESCRITOR
+C
+NOTA
+120
+Amazônia em foco.docx,[A] 200 — desenvolve o tema com argumentação consistente e repertório produtivo  
+[B] 160 — desenvolve o tema com boa argumentação e domínio da estrutura dissertativa  
+[C] 120 — desenvolve o tema com argumentação previsível e domínio mediano da estrutura  
+[D] 80 — domínio insuficiente da estrutura dissertativo-argumentativa ou cópia de motivadores  
+[E] 40 — tangencia o tema ou apresenta traços constantes de outros tipos textuais  
+[F] 0 — fuga ao tema ou não atendimento à estrutura dissertativo-argumentativa  
+
+NOTA
+<200>
+Amazônia em foco.docx,DESCRITOR
+B
+NOTA
+160
+Amazônia em foco.docx,DESCRITOR 
+A
+NOTA
+200
+Amazônia em foco.docx,DESCRITOR 
+A  
+NOTA  
+200
